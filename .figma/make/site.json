@@ -1,0 +1,10 @@
+{
+  "description": "Helps users improve their UI design with practical suggestions to make interfaces more polished, appealing, and user-friendly.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

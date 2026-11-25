@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <!-- cahaya atmosfer di luar bola -->
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0.8" stop-color="#6fb4ff" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#6fb4ff" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- lautan: terang di kiri atas, gelap di tepi -->
+    <radialGradient id="ocean" cx="36%" cy="30%" r="78%">
+      <stop offset="0" stop-color="#5db4f5"/>
+      <stop offset="0.5" stop-color="#1f6cc4"/>
+      <stop offset="1" stop-color="#0a2d6e"/>
+    </radialGradient>
+
+    <!-- daratan: gurun cokelat di atas, hutan hijau di bawah -->
+    <linearGradient id="land" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4e9b45"/>
+      <stop offset="0.3" stop-color="#c9aa6a"/>
+      <stop offset="0.7" stop-color="#b08c4e"/>
+      <stop offset="1" stop-color="#3f8a3c"/>
+    </linearGradient>
+
+    <!-- bayangan: sisi kanan bawah gelap (malam) -->
+    <radialGradient id="shade" cx="34%" cy="28%" r="82%">
+      <stop offset="0.45" stop-color="#000014" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000014" stop-opacity="0.72"/>
+    </radialGradient>
+
+    <!-- kilau matahari -->
+    <radialGradient id="shine" cx="32%" cy="26%" r="30%">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+
+    <clipPath id="globe"><circle cx="32" cy="32" r="28"/></clipPath>
+  </defs>
+
+  <!-- atmosfer -->
+  <circle cx="32" cy="32" r="31.5" fill="url(#glow)"/>
+
+  <g clip-path="url(#globe)">
+    <!-- laut -->
+    <rect width="64" height="64" fill="url(#ocean)"/>
+
+    <!-- es kutub -->
+    <ellipse cx="34" cy="3.5" rx="14" ry="5" fill="#f2f8ff"/>
+    <ellipse cx="32" cy="61" rx="15" ry="5.5" fill="#e8f1fb"/>
+
+    <!-- benua -->
+    <g fill="url(#land)">
+      <!-- Eropa -->
+      <path d="M22 15 C25 11 31 11 35 13 C37 15 34 18 30 19 C27 20 24 21 22 19 C21 17 21 16 22 15 Z"/>
+      <!-- Afrika -->
+      <path d="M22 26 C26 22 32 22 37 24 C41 25 46 27 47 31 C45 34 43 36 41 40 C39 46 36 51 31 51 C28 49 29 44 27 40 C24 36 19 32 22 26 Z"/>
+      <!-- Asia -->
+      <path d="M39 14 C45 11 53 14 56 21 C55 26 50 27 46 25 C42 23 38 19 39 14 Z"/>
+      <!-- Madagaskar -->
+      <ellipse cx="45" cy="42" rx="1.5" ry="3.2" transform="rotate(10 45 42)"/>
+    </g>
+
+    <!-- awan -->
+    <g fill="#ffffff" opacity="0.78">
+      <path d="M12 22 C15 19 21 20 22 22 C21 24 16 25 12 24 Z"/>
+      <path d="M33 34 C37 32 45 33 47 35 C44 37 36 38 33 36 Z"/>
+      <path d="M15 42 C19 39 25 40 27 42 C24 44 18 45 15 44 Z"/>
+      <path d="M40 8 C44 6 50 8 51 10 C48 11 42 11 40 10 Z" opacity="0.7"/>
+      <path d="M44 48 C48 46 53 47 54 49 C51 51 46 51 44 50 Z" opacity="0.65"/>
+    </g>
+
+    <!-- bayangan dan kilau -->
+    <rect width="64" height="64" fill="url(#shade)"/>
+    <rect width="64" height="64" fill="url(#shine)"/>
+  </g>
+
+  <!-- tepi bola -->
+  <circle cx="32" cy="32" r="28" fill="none" stroke="#9fd0ff" stroke-opacity="0.35" stroke-width="0.8"/>
+</svg>
