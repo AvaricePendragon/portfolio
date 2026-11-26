@@ -6,10 +6,11 @@ import { GALAXY_CENTER, SOLAR_CENTER, WRITING_CENTER } from '../config'
 
 const VIEWS = {
   '/':         { pos: [-24, 13.5, 58],   look: [3, 10.0, 38] },
-  '/projects': { pos: [-7, 13.5, -47],   look: [1.5, 7.6, -70] }, // <-- Pastikan koordinat ini digunakan
-  '/writing':  { pos: [13.5, 38, 0.01],  look: [13.5, 0, 0] },
+  '/projects': { pos: [-7, 13.5, -47],   look: [1.5, 7.6, -70] },
+  // Kamera langsung mengarah pas ke posisi writing dengan jarak pandang yang sempurna
+  '/writing':  { pos: [13.5, 38, 1],    look: [13.5, 0, 0] },
   '/cabinet':  { pos: [24, 11.2, 26],    look: [36, SOLAR_CENTER[1], 13] },
-  '/contact':  { pos: [28, 12.0, 30],    look: [36, SOLAR_CENTER[1], 13] },
+  '/contact':  { pos: [-13, 5.0, 23],   look: [29, 5.0, 0] },
 }
 
 export default function CameraRig({ path }) {
@@ -17,7 +18,8 @@ export default function CameraRig({ path }) {
   const animating = useRef(true)
   const goal = useRef(new THREE.Vector3())
   const width = useThree((s) => s.size.width)
-  const isLocked = path === '/writing'
+  
+  const isLocked = path === '/writing' || path === '/contact'
 
   useEffect(() => {
     animating.current = true
@@ -28,7 +30,7 @@ export default function CameraRig({ path }) {
     if (!c || !animating.current) return
 
     const v = VIEWS[path] ?? VIEWS['/']
-    const speed = 2.5
+    const speed = 3.5 // Kecepatan transisi dipercepat agar langsung pada posisi yang tepat
 
     const aspect = size.width / size.height
     const k = !isLocked && aspect < 1.2 ? Math.min(2, 1 + (1.2 - aspect) * 0.9) : 1

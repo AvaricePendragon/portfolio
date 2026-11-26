@@ -49,6 +49,7 @@ export default function App() {
 
       <div className="ambient-shade" aria-hidden="true" />
 
+      {/* Tombol mata dikembalikan ke luar agar selalu bisa diklik di HP maupun Desktop */}
       <button
         className="eye-btn"
         onClick={() => setHidden((h) => !h)}
@@ -73,6 +74,7 @@ export default function App() {
         <header className="site-header">
           <Nav />
         </header>
+
         <Routes>
           <Route path="/" element={<About />} />
           <Route path="/projects" element={<Projects />} />

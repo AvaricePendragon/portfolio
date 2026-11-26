@@ -21,9 +21,9 @@ function Head({ title, sub }) {
 
 /* ============================================================
    Media: gambar / video, dipakai di kartu proyek DAN di dalam tulisan
-   - video autoplay (muted, loop) saat terlihat, berhenti saat keluar layar
-   - controls: true → video dengan tombol play/seek/suara, tanpa autoplay
-   - natural: true → tinggi mengikuti isi (untuk di dalam tulisan)
+- video autoplay (muted, loop) saat terlihat, berhenti saat keluar layar
+- controls: true → video dengan tombol play/seek/suara, tanpa autoplay
+- natural: true → tinggi mengikuti isi (untuk di dalam tulisan)
    ============================================================ */
 function Media({ media, alt, natural = false }) {
   const box = useRef(null)
@@ -91,11 +91,11 @@ function Media({ media, alt, natural = false }) {
 
 /* ============================================================
    Block: satu bagian isi tulisan
-   - string                        → paragraf
-   - { type: 'heading', text }     → subjudul
-   - { type: 'image', src, caption }
-   - { type: 'video', src, poster, caption, controls?, ratio? }
-   - { type: 'youtube', id, caption }
+- string                        → paragraf
+- { type: 'heading', text }     → subjudul
+- { type: 'image', src, caption }
+- { type: 'video', src, poster, caption, controls?, ratio? }
+- { type: 'youtube', id, caption }
    ============================================================ */
 function Block({ block }) {
   if (typeof block === 'string') return <p>{block}</p>
@@ -228,10 +228,7 @@ export function WritingPost() {
    Cabinet: dinding sampul lagu + film (iTunes)
    ============================================================ */
 
-// hanya satu lagu yang boleh berbunyi pada satu waktu
 let currentAudio = null
-
-// hasil pencarian iTunes disimpan, supaya satu judul tidak dicari dua kali
 const itunesCache = new Map()
 
 function fetchItunes(query, kind) {
@@ -256,7 +253,6 @@ function fetchItunes(query, kind) {
   return itunesCache.get(key)
 }
 
-// null = sedang memuat, false = tidak ketemu / gagal, objek = berhasil
 function useItunes(query, kind) {
   const [data, setData] = useState(query ? null : false)
 
@@ -279,7 +275,6 @@ function Piece({ item }) {
   const audio = useRef(null)
   const [playing, setPlaying] = useState(false)
 
-  // hentikan suara kalau pindah halaman
   useEffect(() => () => audio.current?.pause(), [])
 
   const toggle = () => {
@@ -304,7 +299,7 @@ function Piece({ item }) {
   }
 
   const shape = item.kind === 'film' || item.tall ? 'tall' : 'square'
-  const noCover = !cover && itunes !== null   // gagal/tanpa gambar → judul selalu tampil
+  const noCover = !cover && itunes !== null
   const cls = `piece ${shape} ${noCover ? 'nocover' : ''} ${playing ? 'playing' : ''}`
 
   const body = (
@@ -329,7 +324,6 @@ function Piece({ item }) {
     </>
   )
 
-  // film dengan link → tautan biasa; sisanya → tombol putar/berhenti
   if (item.kind === 'film' && item.link) {
     return (
       <a className={cls} href={item.link} target="_blank" rel="noreferrer">
@@ -370,5 +364,32 @@ export function Cabinet() {
 }
 
 export function Contact() {
-  // isi komponen contact kamu
+  return (
+    <>
+      <Head title="contact" sub="Transmitting across dimensions. Send a signal." />
+      <div className="prose">
+        <p className="intro">
+          You can reach out through the coordinates below. No watch required.
+        </p>
+      </div>
+      <div className="links" style={{ marginTop: '24px' }}>
+        <a href="mailto:crescenttold@gmail.com" target="_blank" rel="noreferrer">
+          <span>Email</span>
+          <b aria-hidden="true">↗</b>
+        </a>
+        <a href="https://github.com/AvaricePendragon" target="_blank" rel="noreferrer">
+          <span>GitHub</span>
+          <b aria-hidden="true">↗</b>
+        </a>
+        <a href="https://linkedin.com" target="_blank" rel="noreferrer">
+          <span>LinkedIn</span>
+          <b aria-hidden="true">↗</b>
+        </a>
+        <a href="https://instagram.com/crescenttells" target="_blank" rel="noreferrer">
+          <span>Instagram</span>
+          <b aria-hidden="true">↗</b>
+        </a>
+      </div>
+    </>
+  )
 }

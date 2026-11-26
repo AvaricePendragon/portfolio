@@ -29,9 +29,22 @@ export const WRITING = {
   sub: 'notes, thoughts, and things i learned along the way.',
   items: [
     {
-      slug: 'why-i-started-to-study-anything',
+      slug: 'how-arabic-heal-me',
+      title: 'how arabic heal me',
+      date: 'July 20, 2026',
+      body: [
+        "For a long time I waited until things were ready before showing them to anyone. Ready never came.",
+        "So I tried the opposite: ship something small, imperfect, and tell people about it. The first few posts were embarrassing. They were also the first time anyone gave me feedback that actually helped.",
+        "Building in public is not about an audience. It is about making it a little harder to quietly give up.",
+        { type: 'image', src: '/media/cabinet/', caption: 'computer network' },
+
+      ],
+    },
+
+    {
+      slug: 'why-i-started-to-learn-anything',
       title: 'Why I started to learn anything',
-      date: 'November 20, 2026',
+      date: 'July 20, 2026',
       body: [
         "For a long time I waited until things were ready before showing them to anyone. Ready never came.",
         "So I tried the opposite: ship something small, imperfect, and tell people about it. The first few posts were embarrassing. They were also the first time anyone gave me feedback that actually helped.",
