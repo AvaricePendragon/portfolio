@@ -7,7 +7,10 @@ import MilkyWay from './MilkyWay'
 import SolarSystem from './SolarSystem'
 import Orbits from './Orbits'
 import Lensing from './Lensing'
+import Wormhole from './Wormhole'
 import { GALAXY_CENTER, SOLAR_CENTER, WRITING_CENTER, LENS_CENTER } from '../config'
+
+const WORMHOLE_CENTER = [3.2, -0.4, 0]
 
 export default function Experience() {
     const { pathname } = useLocation()
@@ -15,32 +18,42 @@ export default function Experience() {
     const section = '/' + (pathname.split('/')[1] ?? '')
 
     return (
-        <Canvas
-            dpr={[1, 1.5]}
-            camera={{ position: [0, 34, 62], fov: 55 }}
-            gl={{ antialias: true, powerPreference: 'high-performance' }}
-        >
+            <Canvas
+                dpr={[1, 1.5]}
+                camera={{ position: [-24, 13.5, 58], fov: 55 }}
+                gl={{ antialias: true, powerPreference: 'high-performance' }}
+            >
             <color attach="background" args={['#050507']} />
+                <fog attach="fog" args={['#050507', 55, 165]} />
 
             <Stars />
-            <gridHelper args={[300, 150, '#2a2a33', '#16161b']} position={[0, -3, 0]} />
+                {section !== '/' && (
+                <gridHelper args={[450, 75, '#262630', '#14141a']} position={[0, -3, 0]} />
+            )}
 
-            <group position={LENS_CENTER}>
-                <Lensing active={pathname === '/'} />
-            </group>
+            {section === '/' && (
+                <group position={LENS_CENTER}>
+                    <Lensing active />
+                </group>
+            )}
 
-            <group position={GALAXY_CENTER}>
-                <GalaxyCluster />
-                <MilkyWay active={pathname === '/projects'} />
-            </group>
+            {section === '/projects' && (
+                <group position={GALAXY_CENTER}>
+                    <Wormhole active={section === '/projects'} />
+                </group>
+            )}
 
-            <group position={WRITING_CENTER}>
-                <Orbits active={pathname === '/writing'} />
-            </group>
+            {section === '/writing' && (
+                <group position={WRITING_CENTER}>
+                    <Orbits active />
+                </group>
+            )}
 
-            <group position={SOLAR_CENTER}>
-                <SolarSystem active={pathname === '/cabinet'} />
-            </group>
+            {section === '/cabinet' && (
+                <group position={SOLAR_CENTER}>
+                    <SolarSystem active />
+                </group>
+            )}
 
             <CameraRig path={section} />
         </Canvas>

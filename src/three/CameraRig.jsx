@@ -5,10 +5,11 @@ import * as THREE from 'three'
 import { GALAXY_CENTER, SOLAR_CENTER, WRITING_CENTER } from '../config'
 
 const VIEWS = {
-  '/':         { pos: [0, 34, 62],   look: [0, -1, 30] },
-  '/projects': { pos: [-4, 12, -38], look: GALAXY_CENTER },
-  '/writing':  { pos: [-70, 34, 52], look: WRITING_CENTER },
-  '/cabinet':  { pos: [70, 26, 48],  look: SOLAR_CENTER },
+  '/':         { pos: [-24, 13.5, 58],   look: [3, 10.0, 38] },
+  '/projects': { pos: [-7, 13.5, -47],   look: [1.5, 7.6, -70] }, // <-- Pastikan koordinat ini digunakan
+  '/writing':  { pos: [13.5, 38, 0.01],  look: [13.5, 0, 0] },
+  '/cabinet':  { pos: [24, 11.2, 26],    look: [36, SOLAR_CENTER[1], 13] },
+  '/contact':  { pos: [28, 12.0, 30],    look: [36, SOLAR_CENTER[1], 13] },
 }
 
 export default function CameraRig({ path }) {
@@ -16,8 +17,8 @@ export default function CameraRig({ path }) {
   const animating = useRef(true)
   const goal = useRef(new THREE.Vector3())
   const width = useThree((s) => s.size.width)
+  const isLocked = path === '/writing'
 
-  // meluncur ulang saat pindah halaman atau lebar layar berubah (misalnya HP diputar)
   useEffect(() => {
     animating.current = true
   }, [path, width])
@@ -29,9 +30,8 @@ export default function CameraRig({ path }) {
     const v = VIEWS[path] ?? VIEWS['/']
     const speed = 2.5
 
-    // layar sempit → mundurkan kamera supaya adegan tidak terpotong
     const aspect = size.width / size.height
-    const k = aspect < 1.2 ? Math.min(2, 1 + (1.2 - aspect) * 0.9) : 1
+    const k = !isLocked && aspect < 1.2 ? Math.min(2, 1 + (1.2 - aspect) * 0.9) : 1
 
     goal.current.set(
       v.look[0] + (v.pos[0] - v.look[0]) * k,
@@ -47,19 +47,30 @@ export default function CameraRig({ path }) {
     c.target.y = THREE.MathUtils.damp(c.target.y, v.look[1], speed, dt)
     c.target.z = THREE.MathUtils.damp(c.target.z, v.look[2], speed, dt)
 
-    if (camera.position.distanceTo(goal.current) < 0.02) animating.current = false
+    if (isLocked) {
+      camera.up.set(0, 1, 0)
+      camera.lookAt(c.target)
+    }
+
+    if (camera.position.distanceTo(goal.current) < 0.02) {
+      camera.position.copy(goal.current)
+      c.target.set(...v.look)
+      if (isLocked) camera.lookAt(c.target)
+      animating.current = false
+    }
   })
 
   return (
     <OrbitControls
       ref={controls}
       makeDefault
+      enabled={!isLocked}
       enablePan={false}
       enableDamping
       dampingFactor={0.08}
       rotateSpeed={0.5}
       minDistance={4}
-      maxDistance={140}   // dinaikkan karena kamera bisa mundur di layar HP
+      maxDistance={140}
       maxPolarAngle={Math.PI / 2 - 0.02}
       onStart={() => { animating.current = false }}
     />

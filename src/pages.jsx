@@ -136,7 +136,7 @@ function Block({ block }) {
 export function About() {
   return (
     <>
-      <Head title="about" />
+      <Head title="Hey, I'm Crescent!" />
       <div className="prose about-copy">
         {ABOUT.paragraphs.map((t, i) => (
           <p className={i === 0 ? 'intro' : undefined} key={i}>{t}</p>
@@ -367,4 +367,8 @@ export function Cabinet() {
       </div>
     </>
   )
+}
+
+export function Contact() {
+  // isi komponen contact kamu
 }

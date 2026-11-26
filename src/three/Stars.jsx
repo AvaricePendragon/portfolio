@@ -1,7 +1,7 @@
 import { useMemo, useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 
-export default function Stars({ count = 2500, radius = 150 }) {
+export default function Stars({ count = 500, radius = 150 }) {
   const ref = useRef()
 
   // useMemo: dihitung sekali saja, tidak diulang tiap frame

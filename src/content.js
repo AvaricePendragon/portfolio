@@ -1,6 +1,6 @@
 export const ABOUT = {
   paragraphs: [
-    "Hi, I'm Crescent! I build things for the web, and I get lost in the night sky when I should be sleeping.",
+    "I build things for the web, and I get lost in the night sky when I should be sleeping.",
     "This site is a small universe. Every page is a different corner of it: a cluster of galaxies, a solar system, a few orbits, and a bend in spacetime.",
     "The scene behind this text is gravitational lensing. Light from a faraway galaxy gets bent by the gravity of a galaxy in front of it, so we see the same distant object in places it isn't. I like that idea: what you see depends on what stands in between.",
     "Hide this text with the eye button (or press H) and drag around to explore.",
@@ -15,27 +15,12 @@ export const PROJECTS = {
   sub: 'some notable things i have built!',
   items: [
     {
-      title: 'habit tracker app',
-      desc: 'A minimal habit tracker with streaks, gentle reminders, and a weekly summary.',
+      title: 'This Website',
+      desc: 'Just my portfolio website.',
       tags: ['react native', 'firebase'],
       link: '',
       // gambar biasa
-      media: { type: 'image', src: '/media/app-tracker.webp' },
-    },
-    {
-      title: 'weather dashboard',
-      desc: 'A clean dashboard that turns a messy weather API into a quick glance.',
-      tags: ['javascript', 'rest api'],
-      link: '',
-      media: { type: 'image', src: '/media/cabinet/weather.webp' },
-      // tanpa media: kartu tampil tanpa gambar
-    },
-    {
-      title: 'fedora gnome setup',
-      desc: 'A quick look at my Fedora Linux desktop running GNOME, with a clean and minimal setup.',
-      tags: ['fedora', 'gnome', 'linux'],
-      link: '',
-      media: { type: 'video', src: '/media/linux-web.mp4', poster: '/media/linux-poster.webp' },
+      media: { type: 'image', src: '/media/webset.png' },
     },
   ],
 }
@@ -44,8 +29,8 @@ export const WRITING = {
   sub: 'notes, thoughts, and things i learned along the way.',
   items: [
     {
-      slug: 'why-i-started-building-in-public',
-      title: 'Why I started building in public',
+      slug: 'why-i-started-to-study-anything',
+      title: 'Why I started to learn anything',
       date: 'November 20, 2026',
       body: [
         "For a long time I waited until things were ready before showing them to anyone. Ready never came.",
@@ -53,71 +38,6 @@ export const WRITING = {
         "Building in public is not about an audience. It is about making it a little harder to quietly give up.",
         { type: 'image', src: '/media/cabinet/', caption: 'computer network' },
 
-      ],
-    },
-    {
-      slug: 'what-the-night-sky-taught-me',
-      title: 'What the night sky taught me about patience',
-      date: 'November 12, 2026',
-      body: [
-        "The light you see from a star tonight left it a very long time ago. You are looking at the past, and it is still beautiful.",
-        "I think about that when a project feels slow. Most good things take a while to arrive, and you only see the light once it has travelled far enough.",
-        "Keep going. Someone, somewhere, will see it when it gets there.",
-      ],
-    },
-    {
-      slug: 'learning-in-the-open',
-      title: 'Learning in the open',
-      date: 'November 5, 2026',
-      body: [
-        "You do not need to be an expert to start writing about something. You need a question and a little stubbornness.",
-        "When I learn a new tool, I write down what confused me. Those notes turned out to be the most useful thing I have ever published, because they are written for the person I was last week.",
-        { type: 'image', src: '/media/cabinet/book.webp', caption: 'notes on a book page' },
-      ],
-    },
-    {
-      slug: 'a-weekend-building-a-tiny-universe',
-      title: 'A weekend building a tiny universe',
-      date: 'November 22, 2026',
-      body: [
-        "I wanted a portfolio that did not feel like a portfolio. No grid of cards, no hero banner. Just somewhere that felt like a place. So I decided the website would be space.",
-
-        { type: 'image', src: '/media/lptp.webp', caption: 'The setup: one laptop, too much coffee, and a very dark browser tab.' },
-
-        { type: 'heading', text: 'Stars first' },
-        "The first thing I got working was a black screen with a few thousand dots on it. It looked like nothing, and I was weirdly proud of it. Then I added a floor grid and a camera that glides when you click a menu item. Suddenly it felt like I was floating.",
-
-        { type: 'heading', text: 'The bugs were the fun part' },
-        "At one point a whole cluster of galaxies parked itself right on top of my menu. On my phone, the page wobbled sideways like it was trying to escape. The little eye button sat directly on top of the text. Every bug made the site a little less broken and a lot more mine.",
-
-        { type: 'heading', text: 'One page, one corner of the universe' },
-        "Every page ended up as its own scene. Gravitational lensing for about, a galaxy cluster with the Milky Way for projects, orbits for writing, and a solar system for cabinet. I put a small marker on Earth that says you live here, because I could not resist.",
-
-        "None of this was finished in one go. It was an hour here, a late night there, and a lot of refreshing the page to see if the camera landed in the right place. If you are sitting on an idea you think is too big, start with the black screen and a few dots.",
-      ],
-    },
-
-    {
-      slug: 'Nah i aint write anything here',
-      title: 'Nah i aint write anything here',
-      date: 'November 23, 2026',
-      body: [
-        "I have always been the kind of person who loves technology. AI, robotics, anything that makes a machine do something that feels a little like magic. That curiosity is the reason I started building things in the first place.",
-
-        { type: 'heading', text: 'Ideas used to die in my notes app' },
-        "I had a long list of projects I never started. Not because I did not care, but because the gap between the idea in my head and a working thing on the screen felt huge, and my free time is limited. A spare hour here and there does not add up to much when you have to figure everything out alone.",
-
-        { type: 'heading', text: 'Then I started building with Claude' },
-        "Now I describe what I want, and Claude helps me turn it into something real. This very website is proof. I said I wanted a 3D universe with galaxies, a solar system, and a camera that flies between pages, and a few evenings later it existed. When something looked off, I said so, and we fixed it together until it matched what I had imagined.",
-
-        { type: 'video', src: '/media/cosmos-demo.mp4', caption: 'Five seconds of the site, built in my spare time.' },
-        { type: 'heading', text: 'It makes me want to understand more, not less' },
-        "What I like most is that I come out of it understanding more than I went in with. I read the code, I ask why something works, and I change things myself. It feels less like a shortcut and more like having a very patient teammate who never gets tired of my questions.",
-
-        { type: 'heading', text: 'What I want to build next' },
-        "AI and robotics are what pulled me into all of this, and they are where I want to go next. Software that thinks, machines that move. The distance between imagining something and building it keeps shrinking, and that is the most exciting part of this whole era for me.",
-
-        "So if you have a list of ideas collecting dust somewhere, pick the smallest one and start tonight. You will be surprised how far an hour can go.",
       ],
     },
   ],
@@ -163,7 +83,7 @@ export const CABINET = {
       link: 'https://en.wikipedia.org/wiki/Your_Name'
     },
     { kind: 'song', title: 'LOVE DIVE', by: 'IVE', itunes: 'LOVE DIVE IVE' },
-    { kind: 'song', title: 'Lifes A Mess', by: 'Juice WRLD, Halsey', itunes: 'Lifes A Mess' },
+    { kind: 'song', title: 'Lifes A Mess', by: 'Juice WRLD, Halsey', itunes: 'Lifes A Mess JuiceWRLD' },
     { kind: 'song', title: 'Duvet', by: 'Boa', itunes: 'Duvet Boa' },
     { kind: 'song', title: 'the less i know the better', by: 'Tame Impala', itunes: 'the less i know the better Tame Impala' },
     { kind: 'song', title: 'Falling', by: 'Kevin Kasani', itunes: 'Falling Kevin Kasani' },
