@@ -250,10 +250,10 @@ function EarthViewScreen({ lensZRef, active }) {
         </line>
 
         {active && (
-          <Html position={[-4.6, 3.25, 0]} style={{ pointerEvents: 'none' }}>
-            <div className="orbit-label" style={{ textAlign: 'left', color: '#8f9299' }}>
-              WHAT EARTH SEES
-            </div>
+          <Html position={[-4.6, 3.25, 0]} zIndexRange={[100, 0]} style={{ pointerEvents: 'none' }}>
+          <div className="orbit-label" style={{ textAlign: 'left', color: '#8f9299' }}>
+            WHAT EARTH SEES
+           </div>
           </Html>
         )}
       </group>
@@ -371,7 +371,7 @@ function LensingRaysAndGuides({ lensGroupRef, lensZRef, active }) {
 
       <group ref={wellLabelRef}>
         {active && (
-          <Html center style={{ pointerEvents: 'none' }}>
+          <Html center zIndexRange={[100, 0]} style={{ pointerEvents: 'none' }}>
             <div className="orbit-label">foreground galaxy</div>
           </Html>
         )}
@@ -512,10 +512,10 @@ export default function Lensing({ active }) {
 
       {active && (
         <>
-          <Html position={[S_POS.x, GRID_Y - 0.6, S_POS.z]} center style={{ pointerEvents: 'none' }}>
+          <Html position={[S_POS.x, GRID_Y - 0.6, S_POS.z]} center zIndexRange={[100, 0]} style={{ pointerEvents: 'none' }}>
             <div className="orbit-label">background galaxy</div>
           </Html>
-          <Html position={[E_POS.x, GRID_Y - 0.6, E_POS.z]} center style={{ pointerEvents: 'none' }}>
+          <Html position={[E_POS.x, GRID_Y - 0.6, E_POS.z]} center zIndexRange={[100, 0]} style={{ pointerEvents: 'none' }}>
             <div className="orbit-label">earth</div>
           </Html>
           <BrightnessCurveHUD lensZRef={lensZRef} />

@@ -197,7 +197,7 @@ function AnimatedConic({ config, revealRef, index, center, p, isMobile }) {
         <meshBasicMaterial color={config.color} />
       </mesh>
 
-      <Html position={[labelPos.x - (isMobile ? 0.35 : 0.6), 0.05, labelPos.z]} center style={{ pointerEvents: 'none' }}>
+      <Html position={[labelPos.x - (isMobile ? 0.35 : 0.6), 0.05, labelPos.z]} center zIndexRange={[100, 0]} style={{ pointerEvents: 'none' }}>
         <div
           style={{
             color: config.color,
@@ -245,7 +245,7 @@ function FormulaHUD({ isMobile }) {
       }
 
   return (
-    <Html fullscreen calculatePosition={() => [0, 0]} style={{ pointerEvents: 'none' }}>
+    <Html fullscreen calculatePosition={() => [0, 0]} zIndexRange={[100, 0]} style={{ pointerEvents: 'none' }}>
       <div style={wrapperStyle}>
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: isMobile ? '17px' : '23px' }}>
@@ -370,6 +370,7 @@ export default function Orbits({ active }) {
         <Html
           position={[planetPos.x - (isMobile ? 0.95 : 1.55), 0.05, (planetPos.z + topNode.z) * 0.5]}
           center
+          zIndexRange={[100, 0]}
           style={{ pointerEvents: 'none' }}
         >
           <div

@@ -54,7 +54,7 @@ export default function Stars({ count = 700, radius = 150 }) {
         map={starTexture}
         color="#e2e8ff"
         transparent
-        opacity={0.99}
+        opacity={1.29}
         alphaTest={0.01}
         blending={THREE.AdditiveBlending}
         depthWrite={false}

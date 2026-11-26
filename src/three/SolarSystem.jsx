@@ -269,7 +269,7 @@ function VoyagerProbe({ active }) {
       <Glow size={2.2} color="#ffd99e" opacity={0.32} />
 
       {active && (
-        <Html position={[0, 1.35, 0]} center style={{ pointerEvents: 'none' }}>
+        <Html position={[0, 1.35, 0]} center zIndexRange={[100, 0]} style={{ pointerEvents: 'none' }}>
           <div className="planet-label accent" style={{ color: '#e7a663' }}>
             VOYAGER 1
             <span>INTERSTELLAR</span>
@@ -343,7 +343,7 @@ function PlanetNode({ data, active }) {
         ))}
 
         {active && (
-          <Html position={[0, data.radius + 0.35, 0]} center style={{ pointerEvents: 'none' }}>
+          <Html position={[0, data.radius + 0.35, 0]} center zIndexRange={[100, 0]} style={{ pointerEvents: 'none' }}>
             <div className={`planet-label ${data.home ? 'home' : ''}`}>
               {data.name}
               {data.sub && <span>{data.sub}</span>}
@@ -371,7 +371,7 @@ export default function SolarSystem({ active }) {
       <Glow size={5.8} color="#fff3cf" opacity={0.95} />
 
       {active && (
-        <Html position={[0, 3.2, 0]} center style={{ pointerEvents: 'none' }}>
+        <Html position={[0, 3.2, 0]} center zIndexRange={[100, 0]} style={{ pointerEvents: 'none' }}>
           <div className="planet-label">SUN</div>
         </Html>
       )}
