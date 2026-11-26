@@ -309,7 +309,7 @@ function Piece({ item }) {
           src={cover}
           alt={item.title}
           loading="lazy"
-          onError={(e) => (e.currentTarget.style.display = 'none')}
+          onError={(e) => console.log("Gagal merender gambar:", cover, e)}
         />
       )}
       {playing && (
