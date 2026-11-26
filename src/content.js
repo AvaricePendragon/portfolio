@@ -67,7 +67,7 @@ export const CABINET = {
       kind: 'film',
       title: 'Lord Of The Mysteries',
       by: 'Cuttlefish That Loves Diving',
-      cover: '/media/cabinet/lotm.webp',
+      cover: '/public/media/cabinet/lotm.webp',
       link: 'https://en.wikipedia.org/wiki/Captain_America:_The_Winter_Soldier',
     },
     { kind: 'song', title: '505', by: 'Arctic Monkeys', itunes: '505 Arctic Monkeys' },
