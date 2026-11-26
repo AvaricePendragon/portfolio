@@ -28,10 +28,10 @@ export default function Tesseract() {
     return texture
   }, [])
 
-  // 1. Cakram Akresi Utama (Garis-garis cahaya memanjang bengkok)
+  // 1. Cakram Akresi Utama (Ketebalan meruncing tajam hingga setipis jarum di ujung)
   const diskStreaks = useMemo(() => {
-    const streakCount = 4800
-    const segmentsPerStreak = 6
+    const streakCount = 3800
+    const segmentsPerStreak = 12
     const totalVertices = streakCount * segmentsPerStreak * 2
 
     const positions = new Float32Array(totalVertices * 3)
@@ -39,15 +39,17 @@ export default function Tesseract() {
     let ptr = 0
 
     for (let i = 0; i < streakCount; i++) {
-      const u = Math.random()
+      const u = Math.random() // 0 = dekat lubang hitam, 1 = tepi luar
       const radius = 1.15 + Math.pow(u, 1.35) * 6.8
       const startAngle = Math.random() * Math.PI * 2
       
       const closeness = Math.max(0, 1.0 - (radius - 1.15) / 6.8)
-      const arcLength = (0.18 + closeness * 0.45) * (0.6 + Math.random() * 0.8)
+      const arcLength = (0.55 + closeness * 0.95) * (0.8 + Math.random() * 0.6)
       
+      // Faktor penipisan tajam di ujung luar menggunakan pangkat tinggi (power curve)
+      const sharpEdgeFactor = Math.pow(Math.sin(u * Math.PI), 2.2)
       const waveOffset = Math.random() * Math.PI * 2
-      const baseThickness = (Math.random() - 0.5) * (0.04 + (radius - 1.15) * 0.16)
+      const baseThickness = (Math.random() - 0.5) * (0.015 + (radius - 1.15) * 0.08) * sharpEdgeFactor
 
       const coreGlow = Math.pow(closeness, 1.5)
       const rCol = 1.0
@@ -61,14 +63,25 @@ export default function Tesseract() {
         const a1 = startAngle + t1 * arcLength
         const a2 = startAngle + t2 * arcLength
 
-        const rad1 = radius - t1 * 0.08
-        const rad2 = radius - t2 * 0.08
+        const rad1 = radius - t1 * 0.12
+        const rad2 = radius - t2 * 0.12
 
-        const y1 = baseThickness + Math.sin(a1 * 2.5 + waveOffset) * 0.06
-        const y2 = baseThickness + Math.sin(a2 * 2.5 + waveOffset) * 0.06
+        const taper1 = Math.sin(t1 * Math.PI)
+        const taper2 = Math.sin(t2 * Math.PI)
 
-        const fade1 = Math.sin(t1 * Math.PI)
-        const fade2 = Math.sin(t2 * Math.PI)
+        // Ketebalan vertikal meruncing tajam mendekati nol di ujung segmen
+        const y1 = baseThickness + Math.sin(a1 * 2.0 + waveOffset) * (0.025 * sharpEdgeFactor * Math.pow(taper1, 1.5))
+        const y2 = baseThickness + Math.sin(a2 * 2.0 + waveOffset) * (0.025 * sharpEdgeFactor * Math.pow(taper2, 1.5))
+
+        // Pola jeda putus-putus dengan transisi tajam di ujung
+        const dashFrequency = THREE.MathUtils.lerp(2.0, 11.0, u)
+        const rawDash = Math.sin(t1 * Math.PI * dashFrequency) > 0.0 ? 1 : 0.05
+        const dashPattern = THREE.MathUtils.lerp(1.0, rawDash, Math.pow(u, 0.6))
+
+        const blurFade = Math.pow(Math.sin(u * Math.PI), 1.8)
+
+        const fade1 = Math.pow(taper1, 1.4) * blurFade * dashPattern
+        const fade2 = Math.pow(taper2, 1.4) * blurFade * dashPattern
 
         positions[ptr] = Math.cos(a1) * rad1
         positions[ptr + 1] = y1
@@ -140,13 +153,13 @@ export default function Tesseract() {
       <Glow size={3.4} color="#ffb742" opacity={1.0} />
       <Glow size={1.8} color="#ffffff" opacity={0.98} />
 
-      {/* Cakram Akresi Utama */}
+      {/* Cakram Akresi Utama dengan Ujung Meruncing Tajam */}
       <group ref={diskRef} rotation={[0.15, 0, 0]}>
         <lineSegments geometry={diskStreaks}>
           <lineBasicMaterial
             vertexColors
             transparent
-            opacity={0.8}
+            opacity={0.88}
             blending={THREE.AdditiveBlending}
             depthWrite={false}
           />
