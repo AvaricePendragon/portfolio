@@ -71,7 +71,7 @@ export default function CameraRig({ path }) {
       dampingFactor={0.08}
       rotateSpeed={0.5}
       minDistance={4}
-      maxDistance={140}
+      maxDistance={60}
       maxPolarAngle={Math.PI / 2 - 0.02}
       onStart={() => { animating.current = false }}
     />
