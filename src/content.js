@@ -29,26 +29,26 @@ export const WRITING = {
   sub: 'notes, thoughts, and things i learned along the way.',
   items: [
     {
-      slug: 'how-arabic-heal-me',
-      title: 'how arabic heal me',
-      date: 'July 20, 2026',
+      slug: 'Hypocrisy-on-its-peak',
+      title: 'Hypocrisy on its peak',
+      date: 'July 15, 2026',
       body: [
-        "For a long time I waited until things were ready before showing them to anyone. Ready never came.",
-        "So I tried the opposite: ship something small, imperfect, and tell people about it. The first few posts were embarrassing. They were also the first time anyone gave me feedback that actually helped.",
-        "Building in public is not about an audience. It is about making it a little harder to quietly give up.",
+        "a.",
+        "a.",
+        "a.",
         { type: 'image', src: '/media/cabinet/', caption: 'computer network' },
 
       ],
     },
 
     {
-      slug: 'why-i-started-to-learn-anything',
-      title: 'Why I started to learn anything',
-      date: 'July 20, 2026',
+      slug: 'sometimes-lifes-a-mess',
+      title: 'Sometimes Lifes a mess',
+      date: 'May 2, 2026',
       body: [
-        "For a long time I waited until things were ready before showing them to anyone. Ready never came.",
-        "So I tried the opposite: ship something small, imperfect, and tell people about it. The first few posts were embarrassing. They were also the first time anyone gave me feedback that actually helped.",
-        "Building in public is not about an audience. It is about making it a little harder to quietly give up.",
+        "I belong with the one put on this Earth for me, Everybody has their someone, just gotta look and see.",
+        "I'm screaming out, Lord, help me, I've been lonely That's when you accept me, then you set me free.",
+        "sometimes life's a mess, I get high when I'm upset, I remember when me and love didn't click, Searching for somethin' real then I found it.",
         { type: 'image', src: '/media/cabinet/', caption: 'computer network' },
 
       ],
@@ -61,6 +61,7 @@ export const CABINET = {
   items: [
     // kind: 'song' → sampul + potongan lagu otomatis dari iTunes (tulis "judul artis")
     // kind: 'film' → poster dari iTunes; link = halaman yang dibuka saat diklik
+    { kind: 'song', title: 'Lifes A Mess', by: 'Juice WRLD, Halsey', itunes: 'Lifes A Mess JuiceWRLD' },
     { kind: 'song', title: 'Please Dont Call', by: 'Bleachers', itunes: 'Please Dont Call Bleachers' },
     {
       kind: 'film',
@@ -96,7 +97,6 @@ export const CABINET = {
       link: 'https://en.wikipedia.org/wiki/Your_Name'
     },
     { kind: 'song', title: 'LOVE DIVE', by: 'IVE', itunes: 'LOVE DIVE IVE' },
-    { kind: 'song', title: 'Lifes A Mess', by: 'Juice WRLD, Halsey', itunes: 'Lifes A Mess JuiceWRLD' },
     { kind: 'song', title: 'Duvet', by: 'Boa', itunes: 'Duvet Boa' },
     { kind: 'song', title: 'the less i know the better', by: 'Tame Impala', itunes: 'the less i know the better Tame Impala' },
     { kind: 'song', title: 'Falling', by: 'Kevin Kasani', itunes: 'Falling Kevin Kasani' },
