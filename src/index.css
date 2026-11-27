@@ -114,6 +114,7 @@
   width: min(350px, calc(100vw - 48px));
   margin-left: clamp(24px, 34vw, 490px);
   margin-right: auto;
+  margin-top: 170px;
 }
 
 .content.writing-layout .sub {

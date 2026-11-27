@@ -29,7 +29,7 @@ export default function Experience() {
 
             <Stars />
             {section !== '/' && (
-                <gridHelper args={[450, 75, '#262630', '#14141a']} position={[0, -3, 0]} />
+                <gridHelper args={[450, 95, '#262630', '#14141a']} position={[0, -3, 0]} />
             )}
 
             {section === '/' && (

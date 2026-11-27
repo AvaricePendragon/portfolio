@@ -7,7 +7,7 @@ import { GALAXY_CENTER, SOLAR_CENTER, WRITING_CENTER } from '../config'
 const VIEWS = {
   '/':         { pos: [-24, 13.5, 58],   look: [3, 10.0, 38] },
   '/projects': { pos: [-7, 13.5, -47],   look: [1.5, 7.6, -70] },
-  '/writing':  { pos: [13.5, 38, 1],    look: [13.5, 0, 0] },
+  '/writing':  { pos: [13.5, 30, 1],    look: [13.5, 0, 0] },
   '/cabinet':  { pos: [24, 11.2, 26],    look: [36, SOLAR_CENTER[1], 13] },
   '/contact':  { pos: [-13, 5.0, 23],   look: [29, 5.0, 0] },
 }

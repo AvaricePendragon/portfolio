@@ -22,6 +22,9 @@ const EyeOff = () => (
 export default function App() {
   const [hidden, setHidden] = useState(false)
   const { pathname } = useLocation()
+  
+  // BAGIAN YANG DITAMBAHKAN: Deteksi apakah sedang di halaman writing
+  const isWriting = pathname.startsWith('/writing')
   const isWritingIndex = pathname === '/writing'
   const isCabinet = pathname === '/cabinet'
   const isProjects = pathname === '/projects'
@@ -42,14 +45,14 @@ export default function App() {
   }, [])
 
   return (
-    <>
+    // BAGIAN YANG DIUBAH: Menambahkan kelas kondisional 'writing-theme' pada pembungkus utama
+    <div className={`app-wrapper ${isWriting ? 'writing-theme' : ''}`}>
       <div className="canvas-layer">
         <Experience />
       </div>
 
       <div className="ambient-shade" aria-hidden="true" />
 
-      {/* Tombol mata dikembalikan ke luar agar selalu bisa diklik di HP maupun Desktop */}
       <button
         className="eye-btn"
         onClick={() => setHidden((h) => !h)}
@@ -84,6 +87,6 @@ export default function App() {
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </main>
-    </>
+    </div>
   )
 }
